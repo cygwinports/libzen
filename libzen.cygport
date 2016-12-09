@@ -1,0 +1,35 @@
+NAME="libzen"
+VERSION=0.4.34
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Displays multimedia file information"
+DESCRIPTION="MediaInfo is a convenient unified display of the most relevant
+technical and tag data for video and audio files."
+HOMEPAGE="http://mediaarea.net/"
+SRC_URI="http://mediaarea.net/download/source/libzen/${VERSION}/libzen_${VERSION}.tar.bz2"
+SRC_DIR="ZenLib"
+
+PKG_NAMES="libzen0 libzen-devel"
+libzen0_CONTENTS="
+	usr/bin/cygzen-0.dll
+	usr/share/doc/libzen
+"
+libzen_devel_CONTENTS="
+	usr/include/ZenLib/
+	usr/lib/libzen.dll.a
+	usr/lib/pkgconfig/libzen.pc
+"
+
+src_compile() {
+	lndirs
+	cd ${B}/Project/GNU/Library
+	cygautoreconf
+	CYGCONF_SOURCE=. \
+	cygconf
+	cygmake
+}
+
+src_install() {
+	cd ${B}/Project/GNU/Library
+	cyginstall
+}
