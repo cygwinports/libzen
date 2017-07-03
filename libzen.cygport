@@ -1,5 +1,5 @@
 NAME="libzen"
-VERSION=0.4.34
+VERSION=0.4.35
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Displays multimedia file information"
